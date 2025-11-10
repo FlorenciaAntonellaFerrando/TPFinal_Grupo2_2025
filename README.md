@@ -37,7 +37,7 @@ Componentes utilizados:
 
 Diagrama eléctrico o de conexiones:
 
-maquina de estados (diagrama o explicación):
+Maquina de estados (diagrama o explicación):
 
 Imágenes o video demostrativo:
 <img width="978" height="760" alt="image" src="https://github.com/user-attachments/assets/4ef63a39-c0cc-47f9-8da5-792b9d3aaa53" />
