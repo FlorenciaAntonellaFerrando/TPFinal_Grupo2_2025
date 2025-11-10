@@ -4,12 +4,13 @@ Secuencia de juegos.
 Descripción del sistema?:
 
 Integrantes del grupo:
-ALFONZO TAMARA   	tamaralalfonzo20@gmail.com
-FERRANDO FLORENCIA	ferrando.florencia.a@gmail.com
-QUIROGA DAIANA	        daiana.m.quiroga@gmail.com
-ZARATE ALACIEL	        alacielzarate@gmail.com
+ALFONZO TAMARA: tamaralalfonzo20@gmail.com
+FERRANDO FLORENCIA:	ferrando.florencia.a@gmail.com
+QUIROGA DAIANA: daiana.m.quiroga@gmail.com
+ZARATE ALACIEL: alacielzarate@gmail.com
 
 Materia: Laboratorio de computación 1.
+
 Docentes: Matias Jose Gagliardo, Pedro Facundo Iriso.
 
 Descripción general y funcionalidades: Este sistema de Arduino propone 2 juegos de entretenimiento mediante un sistema de luces Led y Botones
