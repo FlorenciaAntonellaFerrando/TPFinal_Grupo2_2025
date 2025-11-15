@@ -1,6 +1,6 @@
 Tp Final de Arduino - Laboratorio de Computacion 1 
 Secuencia de juegos.
-Descripción del sistema:
+Descripción del sistema: //TERMINAR
 
 Integrantes del grupo:
 ALFONZO TAMARA: tamaralalfonzo20@gmail.com
@@ -15,7 +15,7 @@ Descripción general y funcionalidades: Este sistema de Arduino propone 2 juegos
 El primer juego consta de 5 luces, para desafiar los reflejos del usuario estas luces se prenderán y apagarán en secuencia, el objetivo es tocar el botón cuando la luz roja del medio se encuentre encendida, en el momento exacto. El usuario cuenta con 3 intentos para lograrlo y avanzar al 2do juego.
 El segundo intento puede es similar a uno de "simón dice", el usuario deberá replicar una secuencia de luces, repitiendo el patrón al pulsar los botones correspondientes. El usuario cuenta con 3 intentos para lograrlo.
 
-Requisitos funcionales cumplidos: 
+Requisitos funcionales cumplidos: //TERMINAR
 ⦁	Control de Entradas y Salidas: el sistema cuenta con diferentes entradas (como los botones, potenciómetro) y salidas (leds, display, buzzer).
 ⦁	Contador de Flancos: ?
 ⦁	Control Lógico por Tiempo: cuenta con control de tiempo en función de las acciones del usuario (si presiona o no un botón) y de las luces led, el tiempo que se mantiene presionado un botón, etc.
@@ -26,7 +26,7 @@ Componentes utilizados:
 ⦁	Protoboard
 ⦁	Cables
 ⦁	Leds
-⦁	Display
+⦁	Display 
 ⦁	Resistencias
 ⦁	Botones
 ⦁	Buzzer
@@ -39,6 +39,8 @@ Diagrama eléctrico o de conexiones: //editar
 
 Maquina de estados (diagrama o explicación):
 <img width="2030" height="1543" alt="Diagrama de flujo" src="https://github.com/user-attachments/assets/0fa438ac-fc1c-446c-83ff-005341df1b0f" />
+
+Instrucciones de uso y ejecución:
 
 Imágenes o video demostrativo:
 <img width="978" height="760" alt="image" src="https://github.com/user-attachments/assets/4ef63a39-c0cc-47f9-8da5-792b9d3aaa53" />
