@@ -5,7 +5,6 @@ Descripción del sistema:
 Integrantes del grupo:
 ALFONZO TAMARA: tamaralalfonzo20@gmail.com
 FERRANDO FLORENCIA:	ferrando.florencia.a@gmail.com
-QUIROGA DAIANA: daiana.m.quiroga@gmail.com
 ZARATE ALACIEL: alacielzarate@gmail.com
 
 Materia: Laboratorio de computación 1.
