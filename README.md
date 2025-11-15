@@ -35,7 +35,10 @@ Componentes utilizados:
 ⦁	Switch/Interruptor
 
 Diagrama eléctrico o de conexiones: //editar
-![esquema de conexiones](https://github.com/user-attachments/assets/3d0a59a5-304c-49fb-bfee-dd07c81e399f)
+![esquema de conexiones 1](https://github.com/user-attachments/assets/7ea291de-4a79-43ec-8e61-e3aeb101ff01)
+
+<img width="534" height="419" alt="image" src="https://github.com/user-attachments/assets/47640c85-700a-4631-99ec-9c1f3b95e07c" />
+
 
 Maquina de estados (diagrama o explicación):
 <img width="2030" height="1543" alt="Diagrama de flujo" src="https://github.com/user-attachments/assets/0fa438ac-fc1c-446c-83ff-005341df1b0f" />
