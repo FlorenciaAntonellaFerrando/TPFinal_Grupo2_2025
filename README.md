@@ -35,6 +35,8 @@ Componentes utilizados:
 ⦁	Switch/Interruptor
 
 Diagrama eléctrico o de conexiones: //editar
+<img width="1999" height="1545" alt="download" src="https://github.com/user-attachments/assets/04ac3760-69fe-4415-8039-b55c72c5a37e" />
+
 ![esquema de conexiones 1](https://github.com/user-attachments/assets/7ea291de-4a79-43ec-8e61-e3aeb101ff01)
 
 <img width="534" height="419" alt="image" src="https://github.com/user-attachments/assets/47640c85-700a-4631-99ec-9c1f3b95e07c" />
