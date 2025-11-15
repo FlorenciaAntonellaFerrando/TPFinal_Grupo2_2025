@@ -2,7 +2,9 @@
 #include <Servo.h>
 # define PRENDIDO 2
 # define BTN1 3
+# define PIN_SERVO 6
 # define VELOCIDAD 250
+# define BUZZER 9
 int leds[] = {13,12,11,10,8}; //pines
 int contLed = 0; //indice de leds
 int tiempoVelocidad = VELOCIDAD;
@@ -15,8 +17,13 @@ int intentosJuego1 = 2;
 int ganasteJuego1 = false;
 bool limpiar = false; //indica si debe limpiar la pantalla
 char estado = 'A';
+unsigned long tiempoInicioServo = 0; // Para controlar el tiempo de espera del servo
+int estadoServo = 0; // 0: Inactivo, 1: Mover a 90, 2: Esperar en 90, 3: Mover a 0, 4: Esperar en 0, 5: Terminado
+
 
 LiquidCrystal_I2C display(0x27, 16, 2); //instancio lcd
+Servo servo;
+
 
 void setup(){
   Serial.begin(9600);
@@ -34,6 +41,10 @@ void setup(){
   //lcd
   display.init(); 
   display.backlight(); // Enciende la luz de fondo
+  
+  //Servo
+  servo.attach(PIN_SERVO);
+  servo.write(0);// posición inicial
 
 }
 
@@ -82,6 +93,52 @@ void limpiarPantalla(bool &limpiar){
 	}
 }
 
+
+void moverServo(){
+    unsigned long tiempoActual = millis();
+
+    switch(estadoServo){
+        case 0: // Estado inicial: Inactivo, esperando para empezar
+            // No hace nada hasta que se le indique iniciar (por ejemplo, desde el case 'S' en loop)
+            break;
+
+        case 1: // Mover a 90 grados
+            servo.write(90);
+            tiempoInicioServo = tiempoActual; // Guarda el tiempo cuando se movió a 90
+            estadoServo = 2; // Pasa al estado de esperar en 90
+            Serial.println("Servo a 90");
+            break;
+
+        case 2: // Esperar 3 segundos en 90 grados
+            if(tiempoActual - tiempoInicioServo >= 3000){
+                estadoServo = 3; // Pasa al estado de mover a 0
+                Serial.println("Esperó 3s en 90");
+            }
+            break;
+
+        case 3: // Mover a 0 grados
+            servo.write(0);
+            tiempoInicioServo = tiempoActual; // Guarda el tiempo cuando se movió a 0
+            estadoServo = 4; // Pasa al estado de esperar en 0
+            Serial.println("Servo a 0");
+            break;
+
+        case 4: // Esperar 3 segundos en 0 grados
+            if(tiempoActual - tiempoInicioServo >= 3000){
+                estadoServo = 5; // Pasa al estado de terminado
+                Serial.println("Esperó 3s en 0");
+            }
+            break;
+
+        case 5: // Terminado
+            // El servo ya hizo su secuencia.
+            // Aquí puedes cambiar el estado principal del juego a 'F'
+            estado = 'F';
+            estadoServo = 0; // Reinicia el estado del servo para futuras ejecuciones si es necesario
+            Serial.println("Servo terminado, estado a F");
+            break;
+    }
+}
 
 void loop(){
 
@@ -176,13 +233,11 @@ void loop(){
 		break;
 	
 	case 'S':
-		//servo
+		moverServo();
 		break;
 	case 'F':
-		//final
 		break;
 	default:
-		//errores o estados no previstos
 		break;
 	}
 }
