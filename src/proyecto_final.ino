@@ -34,6 +34,8 @@ int secuencia1[3]; //secuencia para el juego 2
 int secuencia2[4]; //secuencia para el juego 2
 int secuencia3[5]; //secuencia para el juego 2
 int faseJuego2 = 1; 
+unsigned long tiempoPrendidoLED = 2000;
+unsigned long tiempoApagadoLED = 1000;
 
 LiquidCrystal_I2C display(0x27, 16, 2); // instancio lcd
 Servo servo;
@@ -170,8 +172,7 @@ void mostrarSecuencia(int secuencia[], int longitud)
 	Serial.println("mostrar Secuencia que entra en funcion");
 	imprimirSecuencia(secuencia, longitud);
 
-	unsigned long tiempoPrendidoLED = 2000;
-	unsigned long tiempoApagadoLED = 1000;
+	
 	int valorPotenciometro = 0;
 	for (int i = 0; i < longitud; i++)
 	{
@@ -374,6 +375,7 @@ void moverServo()
 	case 5: // Terminado
 		// El servo ya hizo su secuencia.
 		estado = 'F';
+		limpiar = true;
 		estadoServo = 0; // Reinicia el estado del servo para futuras ejecuciones si es necesario
 		Serial.println("Servo terminado, estado a F");
 		break;
@@ -473,7 +475,7 @@ void loop()
 		{
 			display.setCursor(0, 1);
 			display.print("Pasar a JUEGO 2");
-			display.setCursor(9, 0);
+			display.setCursor(0, 0);
 			display.print("GANASTE");
 			melodiaVictoria();
 			estado = 'C';
@@ -585,7 +587,11 @@ void loop()
 					}
 				}
 			}
-			if (intentosJuego2 >= 0) faseJuego2 = 4; // Fase de victoria
+			if (intentosJuego2 >= 0) {
+				limpiar = true;
+				limpiarPantalla(limpiar);
+				faseJuego2 = 4;
+				} // Fase de victoria
 		}
 
 		// Comprobación del resultado del juego
@@ -600,7 +606,7 @@ void loop()
 			// GANASTE
 			display.setCursor(0,1);
 			display.print("Fin Juego 2");
-			display.setCursor(9,0);
+			display.setCursor(0,0);
 			display.print("GANASTE");
 			melodiaVictoria();
 			estado = 'S';
@@ -634,15 +640,16 @@ void loop()
 		if (digitalRead(PRENDIDO) == HIGH)
 		{
 			display.setCursor(0, 0);
-			display.print("Reset Arduino");
+			display.print("Reiniciar juego");
 		}
+		break;
 	default:
 		limpiarPantalla(limpiar);
 		todosApagados();
 		if (digitalRead(PRENDIDO) == HIGH)
 		{
 			display.setCursor(0, 0);
-			display.print("SW reset");
+			display.print("Reiniciar juego");
 		}
 		else
 		{
