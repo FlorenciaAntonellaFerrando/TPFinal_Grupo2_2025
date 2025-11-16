@@ -39,7 +39,7 @@ Diagrama eléctrico o de conexiones:
 
 <img width="1999" height="1545" alt="image" src="https://github.com/user-attachments/assets/ccca54cf-38c9-4977-a60a-856fea5efc58" />
 
-Maquina de estados (diagrama o explicación):
+Maquina de estados (diagrama o explicación): //pendiente de editar
 <img width="2030" height="1543" alt="_Diagrama de flujo" src="https://github.com/user-attachments/assets/a3a8ade9-991f-4aad-9726-6bc5875e97ce" />
 
 Instrucciones de uso y ejecución:
