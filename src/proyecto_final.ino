@@ -2,6 +2,8 @@
 #include <Servo.h>
 # define PRENDIDO 2
 # define BTN1 3
+# define BTN2 4
+# define BTN3 5
 # define PIN_SERVO 6
 # define VELOCIDAD 250
 # define BUZZER 9
@@ -9,8 +11,12 @@ int leds[] = {13,12,11,10,8}; //pines
 int contLed = 0; //indice de leds
 int tiempoVelocidad = VELOCIDAD;
 int millisBtn1 = 0;
+int millisBtn2 = 0;
+int millisBtn3 = 0;
 int millisServo = 0;
 int estadoAnteriorBtn1 = LOW;
+int estadoAnteriorBtn2 = LOW;
+int estadoAnteriorBtn3 = LOW;
 int direccion = 1; //toma 2 posible valores 1 y -1 para indicar el sentido de las luces
 unsigned long tiempoAnterior = 0;
 int intentosJuego1 = 2;
@@ -35,6 +41,8 @@ void setup(){
   //Botones
   pinMode(PRENDIDO, INPUT); // prende y apaga el juego
   pinMode(BTN1, INPUT); // Boton para el juego 1
+  pinMode(BTN2, INPUT); // juego 2
+  pinMode(BTN3, INPUT); // juego 2
   
   todosApagados();
   
@@ -45,7 +53,9 @@ void setup(){
   //Servo
   servo.attach(PIN_SERVO);
   servo.write(0);// posición inicial
-
+  
+  // buzzer
+  pinMode(BUZZER, OUTPUT);
 }
 
 void todosApagados(){
@@ -93,6 +103,17 @@ void limpiarPantalla(bool &limpiar){
 	}
 }
 
+void melodiaVictoria(){
+  tone(BUZZER, 523); delay(150); // Do
+  tone(BUZZER, 659); delay(150); // Mi
+  tone(BUZZER, 784); delay(150); // Sol
+  tone(BUZZER, 1047); delay(300); // Do alto
+  noTone(BUZZER);
+  delay(100);
+  tone(BUZZER, 784); delay(150); // Sol
+  tone(BUZZER, 1047); delay(300); // Do alto
+  noTone(BUZZER);
+}
 
 void moverServo(){
     unsigned long tiempoActual = millis();
@@ -215,6 +236,7 @@ void loop(){
 			display.print("Pasar a JUEGO 2");
 			display.setCursor(9,0);
 			display.print("GANASTE");
+			melodiaVictoria();
 			estado = 'C';
 			delay(3000);
 		}
@@ -236,8 +258,28 @@ void loop(){
 		moverServo();
 		break;
 	case 'F':
+		limpiarPantalla(limpiar);
+		display.setCursor(0,1);
+		display.print("GRACIAS TOTALES");
+		if(digitalRead(PRENDIDO) == HIGH){
+			display.setCursor(0,0);
+			display.print("SW reset");
+		}else{
+			limpiar = true;
+			limpiarPantalla(limpiar);
+			estado = 'A';
+		}
 		break;
 	default:
+		limpiarPantalla(limpiar);
+		if(digitalRead(PRENDIDO) == HIGH){
+			display.setCursor(0,0);
+			display.print("SW reset");
+		}else{
+			limpiar = true;
+			limpiarPantalla(limpiar);
+			estado = 'A';
+		}
 		break;
 	}
 }
