@@ -6,6 +6,7 @@ Integrantes del grupo:
 ALFONZO TAMARA: tamaralalfonzo20@gmail.com
 FERRANDO FLORENCIA:	ferrando.florencia.a@gmail.com
 ZARATE ALACIEL: alacielzarate@gmail.com
+QUIROGA DAIANA: 
 
 Materia: Laboratorio de computación 1.
 
