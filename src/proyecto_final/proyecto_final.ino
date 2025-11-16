@@ -34,8 +34,6 @@ int secuencia1[3]; //secuencia para el juego 2
 int secuencia2[4]; //secuencia para el juego 2
 int secuencia3[5]; //secuencia para el juego 2
 int faseJuego2 = 1; 
-unsigned long tiempoPrendidoLED = 2000;
-unsigned long tiempoApagadoLED = 1000;
 
 LiquidCrystal_I2C display(0x27, 16, 2); // instancio lcd
 Servo servo;
@@ -172,7 +170,8 @@ void mostrarSecuencia(int secuencia[], int longitud)
 	Serial.println("mostrar Secuencia que entra en funcion");
 	imprimirSecuencia(secuencia, longitud);
 
-	
+	unsigned long tiempoPrendidoLED = 2000;
+	unsigned long tiempoApagadoLED = 1000;
 	int valorPotenciometro = 0;
 	for (int i = 0; i < longitud; i++)
 	{
