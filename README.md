@@ -13,7 +13,7 @@ Docentes: Matias Jose Gagliardo, Pedro Facundo Iriso.
 
 Descripción general y funcionalidades: Este sistema de Arduino propone 2 juegos de entretenimiento mediante un sistema de luces Led y Botones
 El primer juego consta de 5 luces, para desafiar los reflejos del usuario estas luces se prenderán y apagarán en secuencia, el objetivo es tocar el botón cuando la luz roja del medio se encuentre encendida, en el momento exacto. El usuario cuenta con 3 intentos para lograrlo y avanzar al 2do juego.
-El segundo intento puede es similar a uno de "simón dice", el usuario deberá replicar una secuencia de luces, repitiendo el patrón al pulsar los botones correspondientes. El usuario cuenta con 3 intentos para lograrlo.
+El segundo juego es similar a uno de "simón dice", el usuario deberá replicar una secuencia de luces, repitiendo el patrón al pulsar los botones correspondientes. El usuario cuenta con 3 intentos para lograrlo.
 
 Requisitos funcionales cumplidos:
 ⦁	Control de Entradas y Salidas: el sistema cuenta con diferentes entradas (como los botones, potenciómetro) y salidas (leds, display, buzzer).
