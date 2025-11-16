@@ -48,6 +48,6 @@ Cuando el usuario gana el primer juego, comienza el segundo, una secuencia de lu
 Al igual que en el juego anterior, el usuario puede modificar la velocidad del mismo mediante el potenciómetro, aunque a medida que avanza la velocidad se incrementa de forma automática. En este caso cuenta con dos intentos para ganar. En la primera secuencia de luces se encienden 3 leds, el usuario deberá repetir la misma de forma exitosa. Durante la segunda y tercera secuencia, se encienden 4 y 5 leds respectivamente. Si el usuario repite todas las secuencias correctamente, gana el juego y escucha una melodia de victoria mediante el buzzer, a la vez activa el servo para obtener el premio. En caso contrario pierde el juego.
 
 Imágenes o video demostrativo: //agregar!!!!!!!!!!****
-<img width="978" height="760" alt="image" src="https://github.com/user-attachments/assets/4ef63a39-c0cc-47f9-8da5-792b9d3aaa53" />
+![WhatsApp Image 2025-11-15 at 01 19 30_8f48640a](https://github.com/user-attachments/assets/2ce28a00-038e-49bb-a756-b771aba3f1c9)
 
 Créditos: a las integrantes del grupo ¯⁠\⁠_⁠(⁠ツ⁠)⁠_⁠/⁠¯.
