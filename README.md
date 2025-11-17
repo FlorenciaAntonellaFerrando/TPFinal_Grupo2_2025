@@ -35,10 +35,13 @@ Componentes utilizados:
 ⦁	Potenciómetro
 ⦁	Switch/Interruptor
 
-Diagrama eléctrico o de conexiones:
+Diagrama eléctrico:
 <img width="1999" height="1545" alt="download" src="https://github.com/user-attachments/assets/04ac3760-69fe-4415-8039-b55c72c5a37e" />
-
 <img width="1999" height="1545" alt="image" src="https://github.com/user-attachments/assets/ccca54cf-38c9-4977-a60a-856fea5efc58" />
+
+diagrama de conexiones:
+<img width="916" height="624" alt="image" src="https://github.com/user-attachments/assets/14439153-bb90-42ef-a9a5-36517be362f8" />
+
 
 Maquina de estados (diagrama o explicación): //pendiente de editar
 <img width="2030" height="1543" alt="_Diagrama de flujo" src="https://github.com/user-attachments/assets/a3a8ade9-991f-4aad-9726-6bc5875e97ce" />
