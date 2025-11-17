@@ -1,6 +1,6 @@
 Tp Final de Arduino - Laboratorio de Computacion 1 
 Secuencia de juegos.
-Descripción del sistema: //TERMINAR
+Descripción del sistema: 
 
 Integrantes del grupo:
 ALFONZO TAMARA: tamaralalfonzo20@gmail.com
@@ -49,6 +49,11 @@ Cuando el usuario gana el primer juego, comienza el segundo, una secuencia de lu
 Al igual que en el juego anterior, el usuario puede modificar la velocidad del mismo mediante el potenciómetro, aunque a medida que avanza la velocidad se incrementa de forma automática. En este caso cuenta con dos intentos para ganar. En la primera secuencia de luces se encienden 3 leds, el usuario deberá repetir la misma de forma exitosa. Durante la segunda y tercera secuencia, se encienden 4 y 5 leds respectivamente. Si el usuario repite todas las secuencias correctamente, gana el juego y escucha una melodia de victoria mediante el buzzer, a la vez activa el servo para obtener el premio. En caso contrario pierde el juego y el buzzer emite una melodia de derrota.
 
 Imágenes o video demostrativo: //agregar!!!!!!!!!!****
-![WhatsApp Image 2025-11-15 at 01 19 30_8f48640a](https://github.com/user-attachments/assets/2ce28a00-038e-49bb-a756-b771aba3f1c9)
+![foto final](https://github.com/user-attachments/assets/0f9e3d83-4d9b-40e0-a72b-44adfb8a44f0)
+
+![WhatsApp Image 2025-11-15 at 17 17 59](https://github.com/user-attachments/assets/e7cf2436-091a-4a6d-bd43-779ec8c4d81e)
+
+![WhatsApp Image 2025-11-16 at 21 06 53](https://github.com/user-attachments/assets/f99e3d15-6651-4cd6-b3e7-1186a0fe48c2)
+
 
 Créditos: a las integrantes del grupo ¯⁠\⁠_⁠(⁠ツ⁠)⁠_⁠/⁠¯.
