@@ -55,7 +55,8 @@ Imágenes o video demostrativo:
 
 ![WhatsApp Image 2025-11-15 at 17 17 59](https://github.com/user-attachments/assets/e7cf2436-091a-4a6d-bd43-779ec8c4d81e)
 
-![WhatsApp Image 2025-11-16 at 21 06 53](https://github.com/user-attachments/assets/f99e3d15-6651-4cd6-b3e7-1186a0fe48c2)
+![514938298-f99e3d15-6651-4cd6-b3e7-1186a0fe48c2](https://github.com/user-attachments/assets/0b378fe4-8fd1-46b2-9e7f-3adb6a265e31)
+
 
 Los videos se encuentran en la carpeta media, a disposición para descargarlos, o bien en el siguiente enlace para acceder mediante drive: https://drive.google.com/drive/folders/12KCKWD86lNKBZqg8CSxYaXRbglvW2ETn?usp=sharing 
 
