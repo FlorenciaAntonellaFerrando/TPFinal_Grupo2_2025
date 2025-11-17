@@ -42,7 +42,8 @@ Diagrama de conexiones:
 <img width="916" height="624" alt="image" src="https://github.com/user-attachments/assets/14439153-bb90-42ef-a9a5-36517be362f8" />
 
 Maquina de estados (diagrama o explicación): //pendiente de editar
-<img width="2030" height="1543" alt="_Diagrama de flujo" src="https://github.com/user-attachments/assets/a3a8ade9-991f-4aad-9726-6bc5875e97ce" />
+![INICIO (1)](https://github.com/user-attachments/assets/d6333a84-be79-453e-a472-673e823ebd10)
+
 
 Instrucciones de uso y ejecución:
 Al comenzar el juego, mediante pantalla se muestra un mensaje, inmediatamente las luces del primer juego comienzan a encenderse. Al mismo tiempo el usuario puede regular la velocidad del juego mediante el potenciómetro, haciendo que se incremente la dificultad. Teniendo en cuenta el objetivo del primer juego, se deberá presionar el botón del extremo derecho hasta asertar cuando la led del medio se encienda, se cuentan con 3 intentos para lograrlo. El buzzer emite una melodia de victoria al ganar el juego. Cuando el usuario pierde en el primer intento la velocidad de las luces se incrementa automáticamente, a su vez el buzzer emite una melodia de derrota.
