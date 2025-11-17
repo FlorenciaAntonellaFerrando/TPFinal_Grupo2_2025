@@ -213,65 +213,96 @@ bool leerSecuencia(int secuencia[], int largo)
 	int index = 0;
 
 	imprimirSecuencia(secuencia, largo);
+
+	unsigned long ledFeedbackStartTime = 0;
+	bool ledFeedbackActive = false;
+	int currentLedPin = 0;
+	const int LED_FEEDBACK_DURATION = 500;
+
 	while (index < largo)
 	{
-		int estadoBtn1 = digitalRead(BTN1);
-		int estadoBtn2 = digitalRead(BTN2);
-		int estadoBtn3 = digitalRead(BTN3);
 		unsigned long tiempoActual = millis();
-		if (estadoBtn1 == HIGH && estadoAnteriorBtn1 == LOW)
+
+		// TAREA 1: Manejo del LED de feedback
+		if (ledFeedbackActive && (tiempoActual - ledFeedbackStartTime >= LED_FEEDBACK_DURATION))
 		{
-			if (tiempoActual - millisBtn1 > 10)
-			{
-				tone(BUZZER, 523, 250);
-				lectura[index] = 8;
-				digitalWrite(8, HIGH);
-				delay(500);
-				digitalWrite(8, LOW);
-				index++;
-			}
+			digitalWrite(currentLedPin, LOW);
+			ledFeedbackActive = false;
+			currentLedPin = 0;
 		}
-		else
+
+		// TAREA 2: Lectura de nuevos botones
+		if (!ledFeedbackActive)
 		{
+			int estadoBtn1 = digitalRead(BTN1);
+			int estadoBtn2 = digitalRead(BTN2);
+			int estadoBtn3 = digitalRead(BTN3);
+
+			// --- INICIO DE LA CORRECCIÓN: Cadena if / else if ininterrumpida ---
+			if (estadoBtn1 == HIGH && estadoAnteriorBtn1 == LOW)
+			{
+				if (tiempoActual - millisBtn1 > 10)
+				{
+					tone(BUZZER, 523, 250);
+					lectura[index] = 8;
+					digitalWrite(8, HIGH);
+					ledFeedbackActive = true;
+					ledFeedbackStartTime = tiempoActual;
+					currentLedPin = 8;
+					index++;
+				}
+			}
+			else if (estadoBtn2 == HIGH && estadoAnteriorBtn2 == LOW)
+			{
+				if (tiempoActual - millisBtn2 > 10)
+				{
+					tone(BUZZER, 523, 250);
+					lectura[index] = 10;
+					digitalWrite(10, HIGH);
+					ledFeedbackActive = true;
+					ledFeedbackStartTime = tiempoActual;
+					currentLedPin = 10;
+					index++;
+				}
+			}
+			else if (estadoBtn3 == HIGH && estadoAnteriorBtn3 == LOW)
+			{
+				if (tiempoActual - millisBtn3 > 10)
+				{
+					tone(BUZZER, 523, 250);
+					lectura[index] = 11;
+					digitalWrite(11, HIGH);
+					ledFeedbackActive = true;
+					ledFeedbackStartTime = tiempoActual;
+					currentLedPin = 11;
+					index++;
+				}
+			}
+
+			// Actualizamos los estados ANTERIORES para el PRÓXIMO ciclo
 			estadoAnteriorBtn1 = estadoBtn1;
-			millisBtn1 = tiempoActual;
-		}
-		if (estadoBtn2 == HIGH && estadoAnteriorBtn2 == LOW)
-		{
-			if (tiempoActual - millisBtn2 > 10)
-			{
-				tone(BUZZER, 523, 250);
-				lectura[index] = 10;
-				digitalWrite(10, HIGH);
-				delay(500);
-				digitalWrite(10, LOW);
-				index++;
-			}
-		}
-		else
-		{
 			estadoAnteriorBtn2 = estadoBtn2;
-			millisBtn2 = tiempoActual;
-		}
-		if (estadoBtn3 == HIGH && estadoAnteriorBtn3 == LOW)
-		{
-			if (tiempoActual - millisBtn3 > 10)
-			{
-				tone(BUZZER, 523, 250);
-				lectura[index] = 11;
-				digitalWrite(11, HIGH);
-				delay(500);
-				digitalWrite(11, LOW);
-				index++;
-			}
-		}
-		else
-		{
 			estadoAnteriorBtn3 = estadoBtn3;
+			
+			// Actualizamos los timers de debounce
+			millisBtn1 = tiempoActual;
+			millisBtn2 = tiempoActual;
 			millisBtn3 = tiempoActual;
+			// --- FIN DE LA CORRECCIÓN ---
 		}
 	}
 
+	// Espera a que el último parpadeo del LED termine antes de salir
+	while (ledFeedbackActive)
+	{
+		if (millis() - ledFeedbackStartTime >= LED_FEEDBACK_DURATION)
+		{
+			digitalWrite(currentLedPin, LOW);
+			ledFeedbackActive = false;
+		}
+	}
+
+	// Compara la secuencia
 	for (int i = 0; i < largo; i++)
 	{
 		if (secuencia[i] != lectura[i])
