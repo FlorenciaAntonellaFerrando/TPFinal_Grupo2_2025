@@ -41,7 +41,7 @@ Esquema eléctrico:
 Diagrama de conexiones:
 <img width="916" height="624" alt="image" src="https://github.com/user-attachments/assets/14439153-bb90-42ef-a9a5-36517be362f8" />
 
-Maquina de estados (diagrama o explicación): //pendiente de editar
+Diagrama de maquina de estados:
 ![INICIO (1)](https://github.com/user-attachments/assets/d6333a84-be79-453e-a472-673e823ebd10)
 
 
