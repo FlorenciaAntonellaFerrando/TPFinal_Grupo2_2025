@@ -80,21 +80,6 @@ void todosApagados()
 	}
 }
 
-void apagarTodoMenos(int led)
-{
-	for (int i = 0; i < 5; i++)
-	{
-		if (i != led)
-		{
-			digitalWrite(leds[i], LOW);
-		}
-		else
-		{
-			digitalWrite(leds[i], HIGH);
-		}
-	}
-}
-
 void controladorLeds(int contLed)
 {
 	todosApagados();
@@ -229,6 +214,7 @@ bool leerSecuencia(int secuencia[], int largo)
 			digitalWrite(currentLedPin, LOW);
 			ledFeedbackActive = false;
 			currentLedPin = 0;
+			//Serial.print("dentro de apagado");
 		}
 
 		// TAREA 2: Lectura de nuevos botones
@@ -237,6 +223,9 @@ bool leerSecuencia(int secuencia[], int largo)
 			int estadoBtn1 = digitalRead(BTN1);
 			int estadoBtn2 = digitalRead(BTN2);
 			int estadoBtn3 = digitalRead(BTN3);
+
+			//Serial.println("dentro sin apretar");
+
 
 			// --- INICIO DE LA CORRECCIÓN: Cadena if / else if ininterrumpida ---
 			if (estadoBtn1 == HIGH && estadoAnteriorBtn1 == LOW)
@@ -250,9 +239,13 @@ bool leerSecuencia(int secuencia[], int largo)
 					ledFeedbackStartTime = tiempoActual;
 					currentLedPin = 8;
 					index++;
+					//Serial.println("dentro de bt1");
+					millisBtn1 = tiempoActual;
+
+
 				}
 			}
-			else if (estadoBtn2 == HIGH && estadoAnteriorBtn2 == LOW)
+			if (estadoBtn2 == HIGH && estadoAnteriorBtn2 == LOW)
 			{
 				if (tiempoActual - millisBtn2 > 10)
 				{
@@ -263,9 +256,12 @@ bool leerSecuencia(int secuencia[], int largo)
 					ledFeedbackStartTime = tiempoActual;
 					currentLedPin = 10;
 					index++;
+					//Serial.println("dentro de bt2");
+					millisBtn2 = tiempoActual;
+
 				}
 			}
-			else if (estadoBtn3 == HIGH && estadoAnteriorBtn3 == LOW)
+			if (estadoBtn3 == HIGH && estadoAnteriorBtn3 == LOW)
 			{
 				if (tiempoActual - millisBtn3 > 10)
 				{
@@ -276,6 +272,8 @@ bool leerSecuencia(int secuencia[], int largo)
 					ledFeedbackStartTime = tiempoActual;
 					currentLedPin = 11;
 					index++;
+					//Serial.println("dentro de bt3");
+					millisBtn3 = tiempoActual;
 				}
 			}
 
@@ -285,9 +283,9 @@ bool leerSecuencia(int secuencia[], int largo)
 			estadoAnteriorBtn3 = estadoBtn3;
 			
 			// Actualizamos los timers de debounce
-			millisBtn1 = tiempoActual;
-			millisBtn2 = tiempoActual;
-			millisBtn3 = tiempoActual;
+			//millisBtn1 = tiempoActual;
+			//millisBtn2 = tiempoActual;
+			//millisBtn3 = tiempoActual;
 			// --- FIN DE LA CORRECCIÓN ---
 		}
 	}
