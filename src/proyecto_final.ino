@@ -51,9 +51,9 @@ void setup()
 	}
 	// Botones
 	pinMode(PRENDIDO, INPUT); // prende y apaga el juego
-	pinMode(BTN1, INPUT);	  // Boton para el juego 1
-	pinMode(BTN2, INPUT);	  // juego 2
-	pinMode(BTN3, INPUT);	  // juego 2
+	pinMode(BTN1, INPUT);	  // Boton para el juego 1 y 2
+	pinMode(BTN2, INPUT);	  // Boton para el juego 2
+	pinMode(BTN3, INPUT);	  // Boton para el juego 2
 
 	todosApagados();
 
@@ -110,20 +110,15 @@ void generarSecuenciaAleatoria(int arraySalida[], int tamano)
 {
 	for (int i = 0; i < tamano; i++)
 	{
-		// 1. Generar un índice aleatorio: Un número entre 0 y 2 (ambos incluidos).
-		//    random(max) genera un valor de [0, max-1]. Usamos random(3).
+		// Genera un índice aleatorio: un número entre 0 y 2 (ambos incluidos).
+		// random(max) genera un valor de [0, max-1], usamos random(3).
 		int indiceAleatorio = random(NUM_PINES_DISPONIBLES);
 
-		// 2. Asignar el valor del pin correspondiente al array de salida.
+		// Asigna el valor del pin correspondiente al array de salida.
 		arraySalida[i] = PINES_DISPONIBLES[indiceAleatorio];
 	}
 }
 
-void printLCDInit()
-{
-	display.setCursor(0, 0);
-	display.print("Equipo 2");
-}
 
 void limpiarPantalla(bool &limpiar)
 {
@@ -224,10 +219,6 @@ bool leerSecuencia(int secuencia[], int largo)
 			int estadoBtn2 = digitalRead(BTN2);
 			int estadoBtn3 = digitalRead(BTN3);
 
-			//Serial.println("dentro sin apretar");
-
-
-			// --- INICIO DE LA CORRECCIÓN: Cadena if / else if ininterrumpida ---
 			if (estadoBtn1 == HIGH && estadoAnteriorBtn1 == LOW)
 			{
 				if (tiempoActual - millisBtn1 > 10)
@@ -239,7 +230,6 @@ bool leerSecuencia(int secuencia[], int largo)
 					ledFeedbackStartTime = tiempoActual;
 					currentLedPin = 8;
 					index++;
-					//Serial.println("dentro de bt1");
 					millisBtn1 = tiempoActual;
 
 
@@ -256,7 +246,6 @@ bool leerSecuencia(int secuencia[], int largo)
 					ledFeedbackStartTime = tiempoActual;
 					currentLedPin = 10;
 					index++;
-					//Serial.println("dentro de bt2");
 					millisBtn2 = tiempoActual;
 
 				}
@@ -272,21 +261,14 @@ bool leerSecuencia(int secuencia[], int largo)
 					ledFeedbackStartTime = tiempoActual;
 					currentLedPin = 11;
 					index++;
-					//Serial.println("dentro de bt3");
 					millisBtn3 = tiempoActual;
 				}
 			}
 
-			// Actualizamos los estados ANTERIORES para el PRÓXIMO ciclo
 			estadoAnteriorBtn1 = estadoBtn1;
 			estadoAnteriorBtn2 = estadoBtn2;
 			estadoAnteriorBtn3 = estadoBtn3;
-			
-			// Actualizamos los timers de debounce
-			//millisBtn1 = tiempoActual;
-			//millisBtn2 = tiempoActual;
-			//millisBtn3 = tiempoActual;
-			// --- FIN DE LA CORRECCIÓN ---
+
 		}
 	}
 
@@ -314,51 +296,51 @@ bool leerSecuencia(int secuencia[], int largo)
 void melodiaVictoria()
 {
 	tone(BUZZER, 523);
-	delay(150); // Do
+	delay(150); 
 	tone(BUZZER, 659);
-	delay(150); // Mi
+	delay(150); 
 	tone(BUZZER, 784);
-	delay(150); // Sol
+	delay(150); 
 	tone(BUZZER, 1047);
-	delay(300); // Do alto
+	delay(300); 
 	noTone(BUZZER);
 	delay(100);
 	tone(BUZZER, 784);
-	delay(150); // Sol
+	delay(150); 
 	tone(BUZZER, 1047);
-	delay(300); // Do alto
+	delay(300); 
 	noTone(BUZZER);
 }
 
 void melodiaDerrota()
 {
-	tone(BUZZER, 392); delay(250); // Sol
-	tone(BUZZER, 330); delay(250); // Mi
-	tone(BUZZER, 262); delay(400); // Do (grave)
+	tone(BUZZER, 392); delay(250); 
+	tone(BUZZER, 330); delay(250); 
+	tone(BUZZER, 262); delay(400); 
 	noTone(BUZZER);
 }
 
 void melodiaInicioJuego1()
 {
-	tone(BUZZER, 262, 100); // Do (grave)
+	tone(BUZZER, 262, 100); 
 	delay(120);
-	tone(BUZZER, 392, 100); // Sol
+	tone(BUZZER, 392, 100); 
 	delay(120);
-	tone(BUZZER, 523, 150); // Do
+	tone(BUZZER, 523, 150); 
 }
 
 void melodiaFinal()
 {
     // Parte 1: Ascenso
-	tone(BUZZER, 262); delay(200); // Do (grave)
-	tone(BUZZER, 330); delay(200); // Mi
-	tone(BUZZER, 392); delay(200); // Sol
-	tone(BUZZER, 523); delay(400); // Do
+	tone(BUZZER, 262); delay(200); 
+	tone(BUZZER, 330); delay(200); 
+	tone(BUZZER, 392); delay(200); 
+	tone(BUZZER, 523); delay(400); 
     noTone(BUZZER);
     delay(100);
     // Parte 2: Conclusión triunfante
-    tone(BUZZER, 784); delay(250); // Sol (alto)
-    tone(BUZZER, 1047); delay(500); // Do (muy alto)
+    tone(BUZZER, 784); delay(250); 
+    tone(BUZZER, 1047); delay(500); 
     noTone(BUZZER);
 }
 
@@ -367,18 +349,17 @@ void moverServo()
 	unsigned long tiempoActual = millis();
 	switch (estadoServo)
 	{
-	case 0: // Estado inicial: Inactivo, esperando para empezar
-		// No hace nada hasta que se le indique iniciar (por ejemplo, desde el case 'S' en loop)
+	case 0: // Estado inicial
 		break;
 
-	case 1: // Mover a 90 grados
+	case 1: // Mueve a 90 grados
 		servo.write(90);
 		tiempoInicioServo = tiempoActual; // Guarda el tiempo cuando se movió a 90
-		estadoServo = 2;				  // Pasa al estado de esperar en 90
+		estadoServo = 2;				  // Pasa al estado de espera en 90
 		Serial.println("Servo a 90");
 		break;
 
-	case 2: // Esperar 3 segundos en 90 grados
+	case 2: // Espera 3 segundos en 90 grados
 		if (tiempoActual - tiempoInicioServo >= 3000)
 		{
 			estadoServo = 3; // Pasa al estado de mover a 0
@@ -386,14 +367,14 @@ void moverServo()
 		}
 		break;
 
-	case 3: // Mover a 0 grados
+	case 3: // Mueve a 0 grados
 		servo.write(0);
 		tiempoInicioServo = tiempoActual; // Guarda el tiempo cuando se movió a 0
-		estadoServo = 4;				  // Pasa al estado de esperar en 0
+		estadoServo = 4;				  // Pasa al estado de espera en 0
 		Serial.println("Servo a 0");
 		break;
 
-	case 4: // Esperar 3 segundos en 0 grados
+	case 4: // Espera 3 segundos en 0 grados
 		if (tiempoActual - tiempoInicioServo >= 3000)
 		{
 			estadoServo = 5; // Pasa al estado de terminado
@@ -402,10 +383,10 @@ void moverServo()
 		break;
 
 	case 5: // Terminado
-		// El servo ya hizo su secuencia.
+		// El servo ya hizo su secuencia
 		estado = 'F';
 		limpiar = true;
-		estadoServo = 0; // Reinicia el estado del servo para futuras ejecuciones si es necesario
+		estadoServo = 0; 
 		Serial.println("Servo terminado, estado a F");
 		break;
 	}
@@ -414,7 +395,6 @@ void moverServo()
 void loop()
 {
 
-	// printLCDInit();
 	Serial.println(estado);
 	switch (estado)
 	{
