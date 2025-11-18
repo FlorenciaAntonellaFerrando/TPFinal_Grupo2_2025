@@ -80,21 +80,6 @@ void todosApagados()
 	}
 }
 
-void apagarTodoMenos(int led)
-{
-	for (int i = 0; i < 5; i++)
-	{
-		if (i != led)
-		{
-			digitalWrite(leds[i], LOW);
-		}
-		else
-		{
-			digitalWrite(leds[i], HIGH);
-		}
-	}
-}
-
 void controladorLeds(int contLed)
 {
 	todosApagados();
@@ -224,6 +209,7 @@ bool leerSecuencia(int secuencia[], int largo)
 			digitalWrite(currentLedPin, LOW);
 			ledFeedbackActive = false;
 			currentLedPin = 0;
+			//Serial.print("dentro de apagado");
 		}
 
 		// TAREA 2: Lectura de nuevos botones
@@ -233,7 +219,6 @@ bool leerSecuencia(int secuencia[], int largo)
 			int estadoBtn2 = digitalRead(BTN2);
 			int estadoBtn3 = digitalRead(BTN3);
 
-			
 			if (estadoBtn1 == HIGH && estadoAnteriorBtn1 == LOW)
 			{
 				if (tiempoActual - millisBtn1 > 10)
@@ -245,9 +230,12 @@ bool leerSecuencia(int secuencia[], int largo)
 					ledFeedbackStartTime = tiempoActual;
 					currentLedPin = 8;
 					index++;
+					millisBtn1 = tiempoActual;
+
+
 				}
 			}
-			else if (estadoBtn2 == HIGH && estadoAnteriorBtn2 == LOW)
+			if (estadoBtn2 == HIGH && estadoAnteriorBtn2 == LOW)
 			{
 				if (tiempoActual - millisBtn2 > 10)
 				{
@@ -258,9 +246,11 @@ bool leerSecuencia(int secuencia[], int largo)
 					ledFeedbackStartTime = tiempoActual;
 					currentLedPin = 10;
 					index++;
+					millisBtn2 = tiempoActual;
+
 				}
 			}
-			else if (estadoBtn3 == HIGH && estadoAnteriorBtn3 == LOW)
+			if (estadoBtn3 == HIGH && estadoAnteriorBtn3 == LOW)
 			{
 				if (tiempoActual - millisBtn3 > 10)
 				{
@@ -271,19 +261,14 @@ bool leerSecuencia(int secuencia[], int largo)
 					ledFeedbackStartTime = tiempoActual;
 					currentLedPin = 11;
 					index++;
+					millisBtn3 = tiempoActual;
 				}
 			}
 
-			// Actualizamos los estados ANTERIORES para el PRÓXIMO ciclo
 			estadoAnteriorBtn1 = estadoBtn1;
 			estadoAnteriorBtn2 = estadoBtn2;
 			estadoAnteriorBtn3 = estadoBtn3;
-			
-			// Actualizamos los timers de debounce
-			millisBtn1 = tiempoActual;
-			millisBtn2 = tiempoActual;
-			millisBtn3 = tiempoActual;
-		
+
 		}
 	}
 
